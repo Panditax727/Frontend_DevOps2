@@ -24,7 +24,6 @@ jobs:
         with:
           context: .
           push: true
-          no-cache: true
           tags: panditax727/frontend-devops2:latest
 
       - name: Deploy en EC2 frontend
@@ -34,10 +33,10 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo docker pull panditax727/frontend-devops2:latest
-            sudo docker stop frontend || true
-            sudo docker rm frontend || true
-            sudo docker run -d \
+            docker pull panditax727/frontend-devops2:latest
+            docker stop frontend || true
+            docker rm frontend || true
+            docker run -d \
               --name frontend \
               --restart always \
               -p 80:5000 \
