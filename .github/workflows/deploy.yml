@@ -33,10 +33,10 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull panditax727/frontend-devops2:latest
-            docker stop frontend || true
-            docker rm frontend || true
-            docker run -d \
+            sudo docker pull panditax727/frontend-devops2:latest
+            sudo docker stop frontend || true
+            sudo docker rm frontend || true
+            sudo docker run -d \
               --name frontend \
               --restart always \
               -p 80:5000 \
